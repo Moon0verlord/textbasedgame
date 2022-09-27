@@ -1,6 +1,6 @@
 # items
 doorkey = 0
-chart = 0
+map = 0
 oxygentank = 0
 flare = 0
 axe = 0
