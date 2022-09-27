@@ -52,5 +52,5 @@ while question == 1:
             print("It is just a lamp.")
 
 while question == 2:
-  loc2 = input()
+  loc2 = input("testing")
     
