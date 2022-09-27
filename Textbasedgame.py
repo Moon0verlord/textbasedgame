@@ -51,6 +51,9 @@ while question == 1:
         elif standquestion == "look at lamp" or standquestion == "inspect lamp":
             print("It is just a lamp.")
 
+print("You unlock the door and swing it open, as you're standing there you feel a slight breeze from the cold mountain air")
+print("You see an old wise man sitting by a chopped tree with the montain range behind him, There's an oxygen tank laying beside him ")
+
 while question == 2:
-  loc2 = input("testing")
+  loc2 = input("What do you do")
     
