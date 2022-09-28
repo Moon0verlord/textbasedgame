@@ -114,7 +114,7 @@ You make sure to put the map to the mountain firmly in your backpack.""")
         playerinv = "\n".join(inventory)
         continue
     while "inspect" in loc2 and oxygentank == 1 or "look at" in loc2 and oxygentank == 1 or "oxygen tank" in loc2 and oxygentank == 1:
-        print("There is no oxygen tank to look at anymore.")
+        print("You've already picked up the oxygen tank.")
         loc2 = ""
         continue
     while "inspect" in loc2 or "look at" in loc2 and "oxygen tank" in loc2:
@@ -143,6 +143,9 @@ No matter where you turn to, it all looks the same.
 After enough time of wasting your energy, you starve to death.
 (Maybe you should've gotten the map from that old man?)""")
     question = 0
+    while question == 0:
+        print("game over, temporary")
+        break
 elif question == 3 and map == 1:
     print("""After travelling for a while, you stumble onto a roadblock. 
 The path you've taken all this way has been completely blocked out by a snowslide a few hours prior.
@@ -201,6 +204,7 @@ His ice axe is firmly hung up by rope on his side, and there seems to be a usabl
                 loc3 = ""
                 continue
             else: print("I do not know that command.")
+
 if question == 4:
   print("""Climbing a vertical wall was no joke, it's getting pretty late and the fatigue is starting to catch up with you.
 However in the corner of the eye, you cannot believe how lucky you are.
