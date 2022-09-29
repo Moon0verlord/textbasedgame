@@ -122,7 +122,7 @@ You make sure to put the map to the mountain firmly in your backpack.""")
         print("""It looks like a regular oxygen tank, yet it feels familiar. 
 This might come in handy later on.""")
         oxyquestion = input("What do you do with the oxygen tank?: ")
-        if "pick up" in oxyquestion or "grab" in oxyquestion:
+        if "pick up" in oxyquestion or "grab" in oxyquestion or "take" in oxyquestion:
             print("You grab the oxygen tank and tightly strap it to your back.")
             oxygentank = 1
             loc2 = ""
