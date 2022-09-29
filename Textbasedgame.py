@@ -293,7 +293,7 @@ if question == 6:
             print("the gap is too big maybe there's something i can use to close the gap")
         elif "cross" and "ravine" in loc6 and planks == 1:
             print(" You use the planks to make a makeshift bridge and cross the ravine")
-            question = 6
+            question = 7
             loc6 = ""
         if "inspect" in loc6 or "look at" in loc6 and "hut" in loc6:
             print("You approach the torn apart hut")
@@ -478,33 +478,52 @@ Without hesitating, you enter the hallway.""")
         break
 
 
-
-
 if question == 11:
-    print("You enter the icy cave using the amulet you got from the dwarves you see a elevator built by the dwarves")
+    print("""After walking trough the grandiose hallway for what seems an eternity, you come across a large inner sanctum.
+The sactum is very detailed and ornamented, however there is not much of use in there except for a large central elevator.""")
     while question == 11:
-        loc11=input("what do you do?: ")
+        loc11=input("What do you do?: ")
         if loc11 == "inventory" or loc11 == "check inventory":
             if playerinv == "":
                 print("You have nothing in your inventory")
             else:
                 print("Inventory\n********")
                 print(playerinv)
-        if "inspect" in loc11 or "check" in loc11 and "elevator" in loc11:
-            print("You approach the elevator, its missing a key and seems dormant ")
-        elif "enter" in loc11 or "step in" in loc11 and dwarfkey == 0:
-                print("You enter the dwarven elevator and begin ascending to the top")
-                question = 12
-                break
-        elevatorquestion = input("What do you do at the elevator: ")
-        if "use key" in elevatorquestion or "activate" in elevatorquestion and dwarfkey == 1:
-                print("You insert the mysterious key into the keyhole, the cave shakes as the elevator starts running")
-                dwarfkey = 0
-                inventory.remove("dwarfkey")
-        elif "enter" or "open" in elevatorquestion and dwarfkey == 1:
-                print("The elevator is still dormant, maybe your key could activate it")
+        if "approach" in loc11 or "inspect" in loc11 or "enter" in loc11 and "elevator" in loc11:
+            print("""You approach the elevator, it is large and radial. 
+In the middle of the elevator platform there is a small floor stand with a keyhole slot. The stand doesn't reach higher than your hips.
+There is also a large mechanical button on the side of the stand.""")
+            while "approach" in loc11 or "inspect" in loc11 or "check" in loc11 or "enter" in loc11 and "elevator" in loc11:
+                elevatorquestion = input("What do you do at the elevator: ")
+                if "ride" in elevatorquestion and dwarfkey == 0 or "use button" in elevatorquestion and dwarfkey == 0\
+                or "press button" in elevatorquestion and dwarfkey == 0:
+                        print("""You press the large mechanical button on the side of the stand, the elevator starts rising up slowly.
+It looks like it hasn't been used for a while, you have to dodge some small debris that gets shaken loose during the ascent.
+After a while of ascending, the elevator comes to a stop. You get dropped off at another dwarven sanctum inside the mountain.
+This time it is alot smaller, however. You leave the sanctum and approach the peak of the mountain.""")
+                        question = 12
+                        loc11 == ""
+                        break
+                elif "use key" in elevatorquestion and dwarfkey == 1 or "activate" in elevatorquestion and dwarfkey == 1:
+                    print("""You insert the dwarven key into the keyhole, the elevator immediately reacts and starts running.
+The elevator shakes and vibrates so violently you are nearly knocked off your feet. You assume you now need to press the button to make it go up.""")
+                    dwarfkey = 0
+                    inventory.remove("Dwarven Key")
+                elif "ride" in elevatorquestion and dwarfkey == 1 or "use button" in elevatorquestion and dwarfkey == 1\
+                or "press button" in elevatorquestion and dwarfkey == 1:
+                    print("""You try to use the button on the side, however the elevator is still dormant and nothing happens. 
+You should try to use your key first.""")
 
     
+if question == 12:
+    print("placeholder text")
+    while question == 12:
+        loc12 = input("What do you do")
+        if "inspect" in loc12 and "flag" in loc12:
+            print("You carefully approach the slightly frozen flag at the top of the mountain")
+            flagquestion = input("What do you do wiht the flag")
+            if "grab" in flagquestion or "take" in flagquestion:
+                print("You take the flags off of the flag pole")
 
  
         
