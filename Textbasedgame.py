@@ -1,5 +1,4 @@
 import random
-
 # items
 doorkey = 0
 map = 0
@@ -20,6 +19,7 @@ playerinv = "\n".join(inventory)
 number = (random.randrange(1, 10))
 
 
+
 print("""You slowly open your eyes, still feeling drowsy.
 You shoot up like a rocket, remembering today is your coming of age ritual.
 The ritual is not easy, every person that reaches 18 years old has to climb the sacred mountain.
@@ -29,8 +29,7 @@ print("""You rush out bed, getting dressed in most of your climbing hear along t
 You now stand in your room, with an old creaky door infront of you, the faintest ray of light shining trough.
 To your left is an unremarkable nightstand, and behind you is the bed you just left.""")
 
-while question == 0:
-  print("game over, for now")
+
 
 while question == 1:
     loc1 = input("What do you do?: ").lower()
@@ -152,7 +151,7 @@ elif question == 3 and map == 1:
     print("""After travelling for a while, you stumble onto a roadblock. 
 The path you've taken all this way has been completely blocked out by a snowslide a few hours prior.
 You see an icy cave to your left, with nowhere else to turn you cautiously enter the cave.\n""")
-    print("""You enter the cave, both eerie and beautiful alike. The cave almost seems to be in stasis between freezing and melting.
+    print("""You enter the cave, both eerie and beautiful alike. The cave almost seems to flicker and glow.
 You now stand in the middle of the cave, A ray of light shines trough a hole at the top, inviting you to it's only exit, and your only way forward.
 With what will you make the climb however? You cannot climb the wall to the top with your hands.
 To your left you spot the dead body of a previous adventurer, almost perfectly preserved due to the cold.""")
@@ -206,7 +205,6 @@ His ice axe is firmly hung up by rope on his side, and there seems to be a usabl
                 loc3 = ""
                 continue
             else: print("I do not know that command.")
-
 if question == 4:
   print("""Climbing a vertical wall was no joke, it's getting pretty late and the fatigue is starting to catch up with you.
 However in the corner of the eye, you cannot believe how lucky you are.
@@ -221,7 +219,7 @@ while question == 4:
             print(playerinv)
     elif loc4 == "keep walking" or loc4 =="continue" or loc4 == "keep going" or "ignore" in loc4:
         print("""\nYou decide you don't need sleep, and alternatively need the extra hours of the night to travel.
-The back of your head still questioning if this is the right choice, you continue on your journey.""")
+The back of your head still questioning if this is the right choice, you continue on your journey anyways.""")
         question = 5
         sleep = 0
         break
@@ -272,7 +270,6 @@ With a long sigh and after wiping some sweat off your brow, you continue onwards
         question = 6
         break
 
-
 if question == 6:
     print("Ravine arrival, you see a broken hut")
     if question == 6 and oxygentank == 0:
@@ -310,9 +307,104 @@ if question == 6:
                 hutquestion = ""
                 continue
 
-        
+
+if question == 7:
+    print("""You can feel the peak of the mountain getting closer, however you also know that the dangers have not waned yet.
+You keep marching forward until you come across a giant wall of seemingly solid ice. It's mysterious blue glow is very captivating to you.
+Although there is an even MORE captivating glow inside the wall itself, just out of reach lodged inside the wall is a glowing yellow gem.
+You almost feel urged to get it for some reason, yet you also feel like you are wasting time and should continue.""")
+
+
+while question == 7:
+    loc7 = input("What do you do?: ")
+    if loc7 == "inventory" or loc7 == "check inventory":
+        if playerinv == "":
+            print("You have nothing in your inventory")
+        else:
+            print("Inventory\n********")
+            print(playerinv)
+    elif ("keep going" in loc7 or "continue" in loc7 or "head north" in loc7) and jewel == 0:
+        print("You decide to keep going, and leave the gem behind. It's not worth the effort and/or time.")
+        question = 8
+        break
+    elif ("keep going" in loc7 or "continue" in loc7 or "head north" in loc7) and jewel == 1:
+        print("You've decided to get the gem, it was too captivating to leave behind. With the gem stashed safely in your backpack, you continue.")
+        question = 8
+        break
+    elif (loc7 == "grab gem" or loc7 == "get gem" or loc7 == "pick up gem") and jewel == 1:
+        print("You already have the gem in your inventory.")
+    elif (loc7 == "grab gem" or loc7 == "get gem" or loc7 == "pick up gem") and jewel == 0:
+        print("""You frantically try to get the gem by force, but your hands just aren't enough to break trough the ice.
+Maybe you should use an item of some kind?""")
+    elif ("grab gem") and ("with axe") in loc7 and jewel == 1 or ("get gem") and ("with axe") in loc7 and jewel == 1:
+        print("You've already gotten the gem in the wall.")
+    elif ("grab gem") and ("with axe") in loc7 or ("get gem") and ("with axe") in loc7 and jewel == 0:
+        print("""You decide to use your climbing ice axe as a makeshift pickaxe to mine the gem out.
+With some frantic mining work, you finally obtain the gem and stash it in your backpack.""")
+        jewel = 1
+        inventory.append("Yellow Gem")
+        continue
+
+if question == 8:
+    print("""You feel like you near the end of your journey, just a bit left. 
+But it seems as soon as that thought crosses your mind, you see something that makes your heart sink. 
+There is a big dwarven checkpoint infront of you, and it is your only way forward towards the peak of the mountain.
+Taking your chances, you approach the checkpoint.\n""")
+
+    print("""The loud cheering and clanking of ale mugs are heard from a good 50 meters away.
+As you approach, a dwarven guard speaks to you from ontop of a large stonework wall.
+"Oi! What do ye want?" he says. You explain to him you require passage towards the peak.
+"I'm sorry but I cannae do that. There is an annual festival goin' on right now and I can't grant ye passage.
+You sigh, and can't decide what to do. However you remember dwarves are a greedy people, and you might be able to bribe them.
+But with what?\n""")
+
+while question == 8:
+    loc8 = input("What do you do?: ")
+    if loc8 == "inventory" or loc8 == "check inventory":
+        if playerinv == "":
+            print("You have nothing in your inventory")
+        else:
+            print("Inventory\n********")
+            print(playerinv)
+    elif "go back" in loc8 and jewel == 1 or "leave" in loc8 and jewel == 1:
+        print("There's no reason to go back to the wall.")
+    elif "go back" in loc8 and jewel == 0 or "leave" in loc8 and jewel == 0:
+        print("You decide to go back to the wall, and get the beautiful yellow gem to try and bribe the dwarves.")
+        question = 7
+        break
+    while "bribe" in loc8 and jewel == 1 or "give gem" in loc8 and jewel == 1:
+        print("""You approach the dwarf guard again, and reluctantly offer him the gem in your backpack.
+He seems stunned by your offer, and within a second the main gate retracts up into the large stonework wall.
+A stubby dwarf with a beard half his body length comes jogging out, clad in ornamented plate armor.
+"This cannae be!, this jewel is the most beautiful thing I've ever laid me eyes on!"
+He seems to hesitate a bit, but he grants you passage in exchange for the gem.
+
+The dwarf warns you, the peak has shifted and is currently inaccessible by foot. 
+Because the gem you gave him is so beautiful, he gives you two items to bypass the shifted peak.
+He gives you an amulet that will show you a hidden wall into the mountain itself.
+He also gives you a dwarven key, that can operate an elevator inside the mountain to bring you to the peak.
+You continue on your journey towards the peak, you are surely close now.""")
+        inventory.remove("Yellow Gem")
+        inventory.append("Dwarven Amulet")
+        inventory.append("Dwarven Key")
+        amulet = 1
+        dwarvenkey = 1
+        question = 9
+        break
+    while "bribe" in loc8 and jewel == 0 or "give gem" in loc8 and jewel == 0:
+        print("You have nothing to bribe the dwarves with. Something really shiny would work.")
+        loc8 = ""
+        continue
+
+
 if question == 9:
-    print("You see a yeti standing in your path, you carefully approach the yeti")
+    print("""With the warning from the dwarf still fresh in your mind, you can already see the peak grow larger and larger.
+Your enthusiasm does not last long. A gigantic white-furred Yeti jumps infront of you, seemingly waiting for a traveller to pass by.
+Before you can even react he lunges for your axe and snaps it in half like the twig of a birch tree.
+He tells you can't pass unless you succeed at his number guessing game, and if you lose, you die.
+(Talk with the Yeti to proceed to the guess game.)""")
+    inventory.remove("Ice axe")
+    axe = 0
     while question == 9:
         loc9 = input("What do you do?: ")
         if loc9 == "inventory" or loc9 == "check inventory":
@@ -321,38 +413,96 @@ if question == 9:
             else:
                 print("Inventory\n********")
                 print(playerinv)
+        elif "run" in loc9:
+            print("Each 10 steps you take is 1 for the Yeti, you can't outrun him.")
+        elif "fight" in loc9:
+            print("""The Yeti laughs at your feeble attempt of rebellion. 
+With a single swipe of his claw you get thrown off the cliffside, and die in an instant.
+(Maybe next time don't try to challenge an ape the size of a house)""")
+            question = 0
+            break
+        elif "talk" in loc9 or "speak" in loc9 or "interact" in loc9:
+            print("""\"I will think of a number and give you 5 tries to guess it. 
+If you haven't guessed the number after those 5 tries, you will not leave this mountain.\"""")
+            for counter in range(5):
+                yetiquestion = input("Guess what number the Yeti is thinking about: ")
+                if yetiquestion.isdigit():
+                    yetiquestion = int(yetiquestion)
+                    if number < yetiquestion:
+                        print("Too high.")
+                    elif number > yetiquestion:
+                        print("Too low.")
+                    else:
+                        print("""\"I can't believe it, you actually guessed my number. 
+I always keep my word, you may continue on your journey and I will not bother you anymore."
+You pass by the Yeti, and you look like a human geyser with the amount of sweat evaporating from your body.
+Atleast you take some solace in the fact the worst is most likely now over, and continue on.""")
+                        question = 11
+                        break
+                else:
+                    print("Give me a whole number, this will still count as a guess by the way.")
+            else: 
+                print(f"""You failed to guess the number in the amount of tries given.
+The yeti laughs: "You fool, the number was {number}. I am going to enjoy this.
+You try to run away, but before you took even a single step, the Yeti grabbed you by the head and crushed it like a melon.""")
+                question = 0
+                break 
 
-        if "run" in loc9:
-            print("you can't run away")
-        elif "approach" in loc9 or "talk" in loc9:
-            print("The yeti breaks your ice axe tell you that it will let you go trough if you can guess which number he's thinkign about ")
-            yetiquestion = int(input("Guess what number the yeti is thinking about: "))
-            if yetiquestion == number:
-                print("You shall pass")
-                inventory.remove("axe")
-                question = 10
-            elif yetiquestion < number:
-                print("too low guess again")
-                yetiquestion =""
-                continue
-            elif yetiquestion > number:
-                print("too high guess again")
-                yetiquestion = ""
-                continue
+
+if question == 10: 
+    print("""You narrowly escaped the Yeti's cruel tricks, and now stand near the peak of the mountain.
+As the dwarf said, the peak has shifted and the "road" you followed has been blocked by a gigantic pack of snow.
+You surely won't cross this, and you don't see any other way to get to the peak.
+Finally your mind catches up with you, and you remember the items the dwarf gave you. Maybe that amulet works here.
+Infront of you is a big mountain wall, and to the right is the snow that impossible to cross.""")
+
+while question == 10:
+    loc10 = input("What do you do?: ")
+    if loc10 == "inventory" or loc10 == "check inventory":
+        if playerinv == "":
+            print("You have nothing in your inventory")
+        else:
+            print("Inventory\n********")
+            print(playerinv)
+    elif loc10 == "look at wall" or loc10 == "inspect wall" or loc10 == "observe wall" or loc10 == "wall":
+        print("It just looks like a regular mountain side to you. Even when you touch the wall physically, nothing seems off.")
+    elif loc10 == "look at snow" or loc10 == "inspect snow":
+        print("""The huge pack of snow blocks anything trying to cross it. So tightly packed it might aswell be an iron sheet.
+You aren't a bad climber, but even this one would be impossible for you.""")
+    elif loc10 == "use amulet on wall" or loc10 == "hold amulet to wall" or loc10 == "use amulet with wall":
+        print("""You decide to hold the amulet next to the wall, hoping the dwarf told you the truth. 
+Luckily, not long after the wall seems to shift, twist and turn before it completely dissapears from view.
+You now see a grand hallway, made out of beautiful stonework with dwarven architecture.
+Without hesitating, you enter the hallway.""")
+        question = 11
+        break
+
+
 
 
 if question == 11:
     print("You enter the icy cave using the amulet you got from the dwarves you see a elevator built by the dwarves")
     while question == 11:
         loc11=input("what do you do?: ")
-if "inspect" or "check" and "elevator" in loc11:
-    print("You approach the elevator, its missing a key and seems dormant ")
-    elevatorquestion = input("What do you do at the elevator")
-    if "enter" or "open" in elevatorquestion and dwarfkey == 1:
-        print("the elevator is still dormant, maybe your key could activate it")
-    elif "use key" or "activate" and "elevator" in elevatorquestion:
-        print("You insert the mysterious key into the keyhole, the cave shakes as the elevator starts running")
-        
+        if loc11 == "inventory" or loc11 == "check inventory":
+            if playerinv == "":
+                print("You have nothing in your inventory")
+            else:
+                print("Inventory\n********")
+                print(playerinv)
+        if "inspect" in loc11 or "check" in loc11 and "elevator" in loc11:
+            print("You approach the elevator, its missing a key and seems dormant ")
+        elif "enter" in loc11 or "step in" in loc11 and dwarfkey == 0:
+                print("You enter the dwarven elevator and begin ascending to the top")
+                question = 12
+                break
+        elevatorquestion = input("What do you do at the elevator: ")
+        if "use key" in elevatorquestion or "activate" in elevatorquestion and dwarfkey == 1:
+                print("You insert the mysterious key into the keyhole, the cave shakes as the elevator starts running")
+                dwarfkey = 0
+                inventory.remove("dwarfkey")
+        elif "enter" or "open" in elevatorquestion and dwarfkey == 1:
+                print("The elevator is still dormant, maybe your key could activate it")
 
     
 
