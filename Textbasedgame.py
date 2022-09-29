@@ -6,7 +6,7 @@ oxygentank = 0
 flare = 0
 axe = 0
 planks = 0
-jewel = 0
+gem = 0
 amulet = 0
 dwarfkey = 0
 flag = 0
@@ -298,7 +298,7 @@ if question == 6:
         if "inspect" in loc6 or "look at" in loc6 and "hut" in loc6:
             print("You approach the torn apart hut")
             hutquestion = input("What do you do at the hut?: ")
-            if "grab" in hutquestion or "take" in hutquestion and "planks":
+            if "grab" in hutquestion or "take" in hutquestion or "pick up"  in hutquestion and "planks":
                 print("You take the wooden planks with you")
                 planks = 1
                 inventory.append("Planks")
@@ -323,25 +323,25 @@ while question == 7:
         else:
             print("Inventory\n********")
             print(playerinv)
-    elif ("keep going" in loc7 or "continue" in loc7 or "head north" in loc7) and jewel == 0:
+    elif ("keep going" in loc7 or "continue" in loc7 or "head north" in loc7) and gem == 0:
         print("You decide to keep going, and leave the gem behind. It's not worth the effort and/or time.")
         question = 8
         break
-    elif ("keep going" in loc7 or "continue" in loc7 or "head north" in loc7) and jewel == 1:
+    elif ("keep going" in loc7 or "continue" in loc7 or "head north" in loc7) and gem == 1:
         print("You've decided to get the gem, it was too captivating to leave behind. With the gem stashed safely in your backpack, you continue.")
         question = 8
         break
-    elif (loc7 == "grab gem" or loc7 == "get gem" or loc7 == "pick up gem") and jewel == 1:
+    elif (loc7 == "grab gem" or loc7 == "get gem" or loc7 == "pick up gem") and gem == 1:
         print("You already have the gem in your inventory.")
-    elif (loc7 == "grab gem" or loc7 == "get gem" or loc7 == "pick up gem") and jewel == 0:
+    elif (loc7 == "grab gem" or loc7 == "get gem" or loc7 == "pick up gem") and gem == 0:
         print("""You frantically try to get the gem by force, but your hands just aren't enough to break trough the ice.
 Maybe you should use an item of some kind?""")
-    elif ("grab gem") and ("with axe") in loc7 and jewel == 1 or ("get gem") and ("with axe") in loc7 and jewel == 1:
+    elif ("grab gem") and ("with axe") in loc7 and gem == 1 or ("get gem") and ("with axe") in loc7 and gem == 1:
         print("You've already gotten the gem in the wall.")
-    elif ("grab gem") and ("with axe") in loc7 or ("get gem") and ("with axe") in loc7 and jewel == 0:
+    elif ("grab gem") and ("with axe") in loc7 or ("get gem") and ("with axe") in loc7 and gem == 0:
         print("""You decide to use your climbing ice axe as a makeshift pickaxe to mine the gem out.
 With some frantic mining work, you finally obtain the gem and stash it in your backpack.""")
-        jewel = 1
+        gem = 1
         inventory.append("Yellow Gem")
         continue
 
@@ -366,17 +366,17 @@ while question == 8:
         else:
             print("Inventory\n********")
             print(playerinv)
-    elif "go back" in loc8 and jewel == 1 or "leave" in loc8 and jewel == 1:
+    elif "go back" in loc8 and gem == 1 or "leave" in loc8 and gem == 1:
         print("There's no reason to go back to the wall.")
-    elif "go back" in loc8 and jewel == 0 or "leave" in loc8 and jewel == 0:
+    elif "go back" in loc8 and gem == 0 or "leave" in loc8 and gem == 0:
         print("You decide to go back to the wall, and get the beautiful yellow gem to try and bribe the dwarves.")
         question = 7
         break
-    while "bribe" in loc8 and jewel == 1 or "give gem" in loc8 and jewel == 1:
+    while "bribe" in loc8 and gem == 1 or "give gem" in loc8 and gem == 1:
         print("""You approach the dwarf guard again, and reluctantly offer him the gem in your backpack.
 He seems stunned by your offer, and within a second the main gate retracts up into the large stonework wall.
 A stubby dwarf with a beard half his body length comes jogging out, clad in ornamented plate armor.
-"This cannae be!, this jewel is the most beautiful thing I've ever laid me eyes on!"
+"This cannae be!, this gem is the most beautiful thing I've ever laid me eyes on!"
 He seems to hesitate a bit, but he grants you passage in exchange for the gem.
 
 The dwarf warns you, the peak has shifted and is currently inaccessible by foot. 
@@ -391,7 +391,7 @@ You continue on your journey towards the peak, you are surely close now.""")
         dwarvenkey = 1
         question = 9
         break
-    while "bribe" in loc8 and jewel == 0 or "give gem" in loc8 and jewel == 0:
+    while "bribe" in loc8 and gem == 0 or "give gem" in loc8 and gem == 0:
         print("You have nothing to bribe the dwarves with. Something really shiny would work.")
         loc8 = ""
         continue
