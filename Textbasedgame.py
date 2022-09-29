@@ -516,14 +516,34 @@ You should try to use your key first.""")
 
     
 if question == 12:
-    print("placeholder text")
-    while question == 12:
-        loc12 = input("What do you do")
-        if "inspect" in loc12 and "flag" in loc12:
-            print("You carefully approach the slightly frozen flag at the top of the mountain")
-            flagquestion = input("What do you do wiht the flag")
-            if "grab" in flagquestion or "take" in flagquestion:
-                print("You take the flags off of the flag pole")
+  print("""After leaving the sanctum, the chill nearly freezes you solid.
+You have finally reached the summit after all your hardships, and continue to walk to the highest peak.
+There, on the peak you see the thing you came all this way for. The flag that will complete your trial."""
+        )
+  while question == 12:
+    loc12 = input("What do you do?: ")
+    if loc12 == "inventory" or loc12 == "check inventory":
+      if playerinv == "":
+        print("You have nothing in your inventory")
+      else:
+        print("Inventory\n********")
+        print(playerinv)
+    elif ("inspect" in loc12 or "approach" in loc12 or "go to" in loc12
+          or "look at" in loc12) and "flag" in loc12:
+      print("""You approach a slightly frozen line of flags on top of the peak.
+The flag is next to alot of other flags in a row, all hung from a line. You can see a few ripped off by previous villagers.
+""")
+    while True:
+      flagquestion = input("What do you do with the flag?: ")
+      if "grab" in flagquestion or "take" in flagquestion or "get" in flagquestion or "rip off" in flagquestion:
+        print(
+          "You rip a flag right off the line, and stash it in your backpack.")
+        inventory.append("Flag")
+        playerinv = "\n".join(inventory)
+        flag = 1
+        question = 0
+        epilogue = 1
+        break
 
  
         
