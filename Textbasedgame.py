@@ -1,3 +1,5 @@
+import random
+
 # items
 doorkey = 0
 map = 0
@@ -15,7 +17,7 @@ sleep = 0
 question = 1
 inventory = []
 playerinv = "\n".join(inventory)
-
+number = (random.randrange(1, 10))
 
 
 print("""You slowly open your eyes, still feeling drowsy.
@@ -28,7 +30,7 @@ You now stand in your room, with an old creaky door infront of you, the faintest
 To your left is an unremarkable nightstand, and behind you is the bed you just left.""")
 
 while question == 0:
-  print("game over, temporary")
+  print("game over, for now")
 
 while question == 1:
     loc1 = input("What do you do?: ").lower()
@@ -221,6 +223,7 @@ while question == 4:
         print("""\nYou decide you don't need sleep, and alternatively need the extra hours of the night to travel.
 The back of your head still questioning if this is the right choice, you continue on your journey.""")
         question = 5
+        sleep = 0
         break
     while loc4 == "inspect cabin" or loc4 == "go to the cabin" or loc4 == "enter cabin":
         print("""You slowly peek open the door, noticing it's not locked. As far as you know, there is no one inside either.
@@ -268,3 +271,95 @@ With a long sigh and after wiping some sweat off your brow, you continue onwards
         flare = 0
         question = 6
         break
+
+
+if question == 6:
+    print("Ravine arrival, you see a broken hut")
+    if question == 6 and oxygentank == 0:
+        print("You've ran out of oxygen and died")
+        question = 0
+        
+    while question == 6 and oxygentank == 1:
+        loc6 = input("What do you do?: ")
+        if loc6 == "inventory" or loc6 == "check inventory":
+            if playerinv == "":
+                print("You have nothing in your inventory")
+            else:
+                print("Inventory\n********")
+                print(playerinv)
+            
+        if "jump" in loc6:
+            print("You tried to jump across the ravine but the gap was too big and you died")
+            question = 0
+            break
+        elif "cross" and "ravine" in loc6 and planks == 0:
+            print("the gap is too big maybe there's something i can use to close the gap")
+        elif "cross" and "ravine" in loc6 and planks == 1:
+            print(" You use the planks to make a makeshift bridge and cross the ravine")
+            question = 6
+            loc6 = ""
+        if "inspect" in loc6 or "look at" in loc6 and "hut" in loc6:
+            print("You approach the torn apart hut")
+            hutquestion = input("What do you do at the hut?: ")
+            if "grab" in hutquestion or "take" in hutquestion and "planks":
+                print("You take the wooden planks with you")
+                planks = 1
+                inventory.append("Planks")
+                playerinv = "\n".join(inventory)
+                loc6 =""
+                hutquestion = ""
+                continue
+
+        
+if question == 9:
+    print("You see a yeti standing in your path, you carefully approach the yeti")
+    while question == 9:
+        loc9 = input("What do you do?: ")
+        if loc9 == "inventory" or loc9 == "check inventory":
+            if playerinv == "":
+                print("You have nothing in your inventory")
+            else:
+                print("Inventory\n********")
+                print(playerinv)
+
+        if "run" in loc9:
+            print("you can't run away")
+        elif "approach" in loc9 or "talk" in loc9:
+            print("The yeti breaks your ice axe tell you that it will let you go trough if you can guess which number he's thinkign about ")
+            yetiquestion = int(input("Guess what number the yeti is thinking about: "))
+            if yetiquestion == number:
+                print("You shall pass")
+                inventory.remove("axe")
+                question = 10
+            elif yetiquestion < number:
+                print("too low guess again")
+                yetiquestion =""
+                continue
+            elif yetiquestion > number:
+                print("too high guess again")
+                yetiquestion = ""
+                continue
+
+
+if question == 11:
+    print("You enter the icy cave using the amulet you got from the dwarves you see a elevator built by the dwarves")
+    while question == 11:
+        loc11=input("what do you do?: ")
+if "inspect" or "check" and "elevator" in loc11:
+    print("You approach the elevator, its missing a key and seems dormant ")
+    elevatorquestion = input("What do you do at the elevator")
+    if "enter" or "open" in elevatorquestion and dwarfkey == 1:
+        print("the elevator is still dormant, maybe your key could activate it")
+    elif "use key" or "activate" and "elevator" in elevatorquestion:
+        print("You insert the mysterious key into the keyhole, the cave shakes as the elevator starts running")
+        
+
+    
+
+ 
+        
+
+
+
+
+        
