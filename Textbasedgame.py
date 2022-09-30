@@ -39,9 +39,9 @@ while question == 1:
     else:
       print("Inventory\n********")
       print(playerinv)
-  if ("open" and "door") in loc1 and doorkey == 0:
+  if ("open" and "door") in loc1  or ("go outside") in loc1 and doorkey == 0:
     print("You try to open the door, but it is locked.")
-  elif ("open" and "door") in loc1 and doorkey == 1:
+  elif ("open" and "door")in loc1 or ("go outside") in loc1 and doorkey == 1:
     print("You use the key on the door and head outside.\n")
     question = 2
     break
@@ -419,10 +419,9 @@ But it seems as soon as that thought crosses your mind, you see something that m
 There is a big dwarven checkpoint infront of you, and it is your only way forward towards the peak of the mountain.
 Taking your chances, you approach the checkpoint.\n""")
 
-  print(
-    """The loud cheering and clanking of ale mugs are heard from a good 50 meters away.
+  print("""The loud cheering and clanking of ale mugs are heard from a good 50 meters away.
 As you approach, a dwarven guard speaks to you from ontop of a large stonework wall.
-"Oi! What do ye want?" he says. You explain to him you require passage towards the peak.
+"Oi! What do ye want?" he says. You explain to him you require passage towards the peak for your journey.
 "I'm sorry but I cannae do that. There is an annual festival goin' on right now and I can't grant ye passage.
 You sigh, and can't decide what to do. However you remember dwarves are a greedy people, and you might be able to bribe them.
 But with what?\n""")
@@ -436,38 +435,112 @@ while question == 8:
       print("Inventory\n********")
       print(playerinv)
   elif "go back" in loc8 and gem == 1 or "leave" in loc8 and gem == 1:
-    print("There's no reason to go back to the wall.")
+    print("There's no reason to go back to the wall. You already have the gem.")
   elif "go back" in loc8 and gem == 0 or "leave" in loc8 and gem == 0:
     print(
-      "You decide to go back to the wall, and get the beautiful yellow gem to try and bribe the dwarves."
-    )
+      "You decide to go back to the wall, and get the beautiful yellow gem to try and bribe the dwarves.")
     question = 7
     break
-  while "bribe" in loc8 and gem == 1 or "give gem" in loc8 and gem == 1:
-    print(
-      """You approach the dwarf guard again, and reluctantly offer him the gem in your backpack.
+  elif "bribe" in loc8 and gem == 1 or "give gem" in loc8 and gem == 1:
+    print("""You approach the dwarf guard again, and reluctantly offer him the gem in your backpack.
 He seems stunned by your offer, and within a second the main gate retracts up into the large stonework wall.
 A stubby dwarf with a beard half his body length comes jogging out, clad in ornamented plate armor.
 "This cannae be!, this gem is the most beautiful thing I've ever laid me eyes on!"
-He seems to hesitate a bit, but he grants you passage in exchange for the gem.
+He seems to hesitate a bit.
 
+"Okay", he says. "How about we play a little game of rock, paper scissors."
+"If ye win, I'll grant ye passage and give you two items that ye need to finish yer journey, but I take the gem."
+"However I have to tell ye, I have never lost! I am so confident in me ability, ye may try again even if ye fail."
+You reluctantly agree, because there's not really any other way to pass this checkpoint.""")
+  while "bribe" in loc8 and gem == 1 or "give gem" in loc8 and gem == 1:
+        playermove = input("Enter your move: (r)ock, (p)aper, (s)cissors: ")
+        computermove = str(random.randint(1,3))
+        while computermove.isdigit():
+            if computermove == "1":
+                computermove = "r"
+            elif computermove == "2":
+                computermove = "p"
+            elif computermove == "3":
+                computermove = "s"
+        if playermove == "r" or playermove == "s" or playermove == "p":
+            if playermove == "r":
+                if playermove == computermove:
+                    print("Rock!")
+                    print("Damn, we tied. Go again!")
+                    continue
+                elif computermove == "p":
+                    print("Paper!")
+                    print("I win!, I told ye I never lose. Go again!")
+                    continue
+                elif computermove == "s":
+                    print("Scissors!")
+                    print("""\"I lost? WHAT? I cannae believe I lost.. Well, A promise is a promise."
 The dwarf warns you, the peak has shifted and is currently inaccessible by foot. 
-Because the gem you gave him is so beautiful, he gives you two items to bypass the shifted peak.
+He gives you an amulet that will show you a hidden wall into the mountain itself.
+He also gives you a dwarven key, that can operate an elevator inside the mountain to bring you to the peak.
+You continue on your journey towards the peak, you are surely close now.\n""")
+                    inventory.remove("Yellow Gem")
+                    inventory.append("Dwarven Amulet")
+                    inventory.append("Dwarven Key")
+                    playerinv = "\n".join(inventory)
+                    amulet = 1
+                    dwarvenkey = 1
+                    question = 9
+                    break
+            elif playermove == "p":
+                if playermove == computermove:
+                    print("Paper!")
+                    print("Damn, we tied. Go again!")
+                    continue
+                elif computermove == "s":
+                    print("Scissors!")
+                    print("I win!, I told ye I never lose. Go again!")
+                    continue
+                elif computermove == "s":
+                    print("Rock!\n")
+                    print("""\"I lost? WHAT? I cannae believe I lost.. Well, A promise is a promise."
+The dwarf warns you, the peak has shifted and is currently inaccessible by foot. 
+He gives you an amulet that will show you a hidden wall into the mountain itself.
+He also gives you a dwarven key, that can operate an elevator inside the mountain to bring you to the peak.
+You continue on your journey towards the peak, you are surely close now.\n""")
+                    inventory.remove("Yellow Gem")
+                    inventory.append("Dwarven Amulet")
+                    inventory.append("Dwarven Key")
+                    playerinv = "\n".join(inventory)
+                    amulet = 1
+                    dwarvenkey = 1
+                    question = 9
+                    break
+            elif playermove == "s":
+                if playermove == computermove:
+                    print("Scissors!")
+                    print("Damn, we tied. Go again!")
+                    continue
+                elif computermove == "r":
+                    print("Rock!")
+                    print("I win!, I told ye I never lose. Go again!")
+                    continue
+                elif computermove == "p":
+                    print("Paper!")
+                    print("""\"I lost? WHAT? I cannae believe I lost.. Well, A promise is a promise."
+The dwarf warns you, the peak has shifted and is currently inaccessible by foot. 
 He gives you an amulet that will show you a hidden wall into the mountain itself.
 He also gives you a dwarven key, that can operate an elevator inside the mountain to bring you to the peak.
 You continue on your journey towards the peak, you are surely close now.""")
-    inventory.remove("Yellow Gem")
-    inventory.append("Dwarven Amulet")
-    inventory.append("Dwarven Key")
-    playerinv = "\n".join(inventory)
-    amulet = 1
-    dwarvenkey = 1
-    question = 9
-    break
+                    inventory.remove("Yellow Gem")
+                    inventory.append("Dwarven Amulet")
+                    inventory.append("Dwarven Key")
+                    playerinv = "\n".join(inventory)
+                    amulet = 1
+                    dwarvenkey = 1
+                    question = 9
+                    break     
+        else:
+            print("\"Oi! Go again, Just give me the single letter!\"")
+
   while "bribe" in loc8 and gem == 0 or "give gem" in loc8 and gem == 0:
     print(
-      "You have nothing to bribe the dwarves with. Something really shiny would work."
-    )
+      "You have nothing to bribe the dwarves with. Something really shiny would work.")
     loc8 = ""
     continue
 
@@ -641,6 +714,7 @@ The flag is next to alot of other flags in a row, all hung from a line. You can 
         epilogue = 1
         break
 
+#epilogue
 while epilogue == 1:
     print("After much work You've reach the top and take the flag with you, your adventure is finally complete and\
         you can finally start your descent back to the base of the mountain")
@@ -649,21 +723,3 @@ while epilogue == 1:
 
 
 
-
-**tijdelijk*
-but he grants you passage in exchange for the gem.
-
-The dwarf warns you, the peak has shifted and is currently inaccessible by foot. 
-Because the gem you gave him is so beautiful, he gives you two items to bypass the shifted peak.
-He gives you an amulet that will show you a hidden wall into the mountain itself.
-He also gives you a dwarven key, that can operate an elevator inside the mountain to bring you to the peak.
-You continue on your journey towards the peak, you are surely close now.
-
-    inventory.remove("Yellow Gem")
-    inventory.append("Dwarven Amulet")
-    inventory.append("Dwarven Key")
-    playerinv = "\n".join(inventory)
-    amulet = 1
-    dwarvenkey = 1
-    question = 9
-    break
