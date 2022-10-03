@@ -42,6 +42,7 @@ To your left is an unremarkable nightstand, and behind you is the bed you just l
         else:
           print("Inventory\n********")
           print(playerinv)
+          print("********")
       if ("open" and "door") in loc1 and doorkey == 0 or ("go outside") in loc1 and doorkey == 0:
         print("You try to open the door, but it is locked.")
       elif ("open" and "door") in loc1 and doorkey == 1 or ("go outside") in loc1 and doorkey == 1:
@@ -104,6 +105,7 @@ To the north of you, you see the sacred mountain, standing sturdy as always. The
             else:
                 print("Inventory\n********")
                 print(playerinv)
+                print("********")
         elif loc2 == "go north" or "climb mountain" in loc2 or "continue" in loc2 or loc2 == "head north" or "go to mountain" in loc2:
             print("You shake off your anxiety, and begin your ascent to the mountain peak.")
             question = 3
@@ -130,7 +132,7 @@ Without it, you'll surely get lost!""")
                 oldmquestion != "map"
                 print("Guess again, kid.")
                 continue
-        while "inspect" in loc2 and oxygentank == 1 or "look at oxygen" in loc2 and oxygentank == 1 or "oxygen tank" in loc2 and oxygentank == 1:
+        while "inspect" in loc2 and oxygentank == 1 or "look at oxygen tank" in loc2 and oxygentank == 1 or "oxygen tank" in loc2 and oxygentank == 1:
             print("You've already picked up the oxygen tank.")
             loc2 = ""
             continue
@@ -178,6 +180,7 @@ To your left you spot the dead body of a previous adventurer, almost perfectly p
         else:
           print("Inventory\n********")
           print(playerinv)
+          print("********")
 
       elif ("climb" and "wall") in loc3 and axe == 0 or ("climb" and "out") in loc3 and axe == 0:
         print("Still you try to scale the wall, but your hands dont grip the icy surface.")
@@ -193,7 +196,7 @@ With a small glance to the unfortunate adventurer down below, you press on and a
           "The strange beauty of the cave mystifies you. The juxtaposition of the corpse against the alluring cave makes you sick to your stomach.")
       elif loc3 == "look at hole" or loc3 == "inspect hole":
         print(
-          "The claustrophic hole at the top of the cavern is almost taunting you, letting you taste the adventure ahead yet granting you no passage.")
+          "The claustrophobic hole at the top of the cavern is almost taunting you, letting you taste the adventure ahead yet granting you no passage.")
       elif ("leave") in loc3:
         print("And then what? This cave is your only way forward.")
 
@@ -201,7 +204,7 @@ With a small glance to the unfortunate adventurer down below, you press on and a
         print("""\nThe corpse of a man lies before you, his body as rigid as the ice it is laying on.
 After closely inspecting the man's gear, most of it has decayed beyond use. However there are two items that catch your eye.
 His ice axe is firmly hung up by rope on his side, and there seems to be a usable flare gun in his backpack, with one flare left.\n""")
-        while ("look at" or "inspect" or "check") and ("body" or "corpse") in loc3:
+        while ("look at" or "inspect" or "check") and ("body" or "corpse") in loc3 or "look at corpse" in loc3:
           bodyquestion = input("What do you do with the body? (Type \"leave\" to go back.): ")
           if bodyquestion == "inventory" or bodyquestion == "check inventory":
                 if playerinv == "":
@@ -209,6 +212,7 @@ His ice axe is firmly hung up by rope on his side, and there seems to be a usabl
                 else:
                     print("Inventory\n********")
                     print(playerinv)
+                    print("********")
           
           elif ("grab" or "pick up") and ("axe" or "ice axe") in bodyquestion and axe == 1:
             print("You have already picked up the ice axe.")
@@ -238,7 +242,7 @@ His ice axe is firmly hung up by rope on his side, and there seems to be a usabl
     if question == 4:
       print("""Climbing a vertical wall was no joke, it's getting pretty late and the fatigue is starting to catch up with you.
 However in the corner of the eye, you cannot believe how lucky you are.
-You spot a log cabin, it's inviting warm colour almost pulling you in.""")
+You spot a log cabin, it's inviting warm color almost pulling you in.""")
     while question == 4:
       loc4 = input("What do you do?: ").lower()
       if loc4 == "inventory" or loc4 == "check inventory":
@@ -247,6 +251,7 @@ You spot a log cabin, it's inviting warm colour almost pulling you in.""")
         else:
           print("Inventory\n********")
           print(playerinv)
+          print("********")
       elif loc4 == "keep walking" or loc4 == "continue" or loc4 == "keep going" or "ignore" in loc4:
         print("""\nYou decide you don't need sleep, and alternatively need the extra hours of the night to travel.
 The back of your head still questioning if this is the right choice, you continue on your journey anyways.""")
@@ -263,6 +268,7 @@ The cabin is a rather desolate place, however there is one thing that you desper
                 else:
                     print("Inventory\n********")
                     print(playerinv)
+                    print("********")
             elif "sleep" in cabinquestion or "stay" in cabinquestion or "go to bed" in cabinquestion:
                 print("""\nYou take off your gear and head to bed, even under itchy covers you quickly drift off to sleep.
 The next morning, you get dressed and head out.\n""")
@@ -307,6 +313,7 @@ Game over.
                 else:
                     print("Inventory\n********")
                     print(playerinv)
+                    print("********")
             elif "use" and "map" in leopardquestion:
                 print("Really?")
             elif "use" and "oxygentank" in leopardquestion and oxygentank == 1 or "use" and "oxygen tank" in leopardquestion and oxygentank == 1:
@@ -326,8 +333,7 @@ With a long sigh and after wiping some sweat off your brow, you continue onwards
                 playerinv = "\n".join(inventory)
                 flare = 0
                 break
-                
-        
+
     #Level 6
     if question == 6:
       print("""After a while of walking, you come across a large ravine.
@@ -349,6 +355,7 @@ Without anybody to get oxygen to you quickly, it doesn't take long for you to di
           else:
             print("Inventory\n********")
             print(playerinv)
+            print("********")
 
         if "jump across" in loc6 or "jump over" in loc6:
           print("""Even with your brain turning on every alarm signal it possibly can, you still ignore it and take the leap of faith across the chasm.
@@ -371,7 +378,7 @@ Luckily, the planks hold and you safely cross the ravine without any trouble."""
           while "inspect" in loc6 or "look at" in loc6 and "hut" in loc6 or "go to" and "hut" in loc6:
             hutquestion = input("What do you do at the hut?: ")
             if "grab" in hutquestion or "take" in hutquestion or "pick up" in hutquestion and "planks":
-                print("You decide to take the long planks with you.")
+                print("You decide to take the long planks with you, and head back to the ravine.")
                 planks = 1
                 inventory.append("Planks")
                 playerinv = "\n".join(inventory)
@@ -394,13 +401,12 @@ You almost feel urged to get it for some reason, yet you also feel like you are 
         else:
           print("Inventory\n********")
           print(playerinv)
-      elif ("keep going" in loc7 or "continue" in loc7
-            or "head north" in loc7) or ("keep climbing" in loc7) and gem == 0:
+          print("********")
+      elif ("keep going" in loc7 or "continue" in loc7 or "head north" in loc7 or "keep climbing" in loc7) and gem == 0:
         print("You decide to keep going, and leave the gem behind. It's not worth the effort and/or time.")
         question = 8
         break
-      elif ("keep going" in loc7 or "continue" in loc7
-            or "head north" in loc7) or ("keep climbing" in loc7) and gem == 1:
+      elif ("keep going" in loc7 or "continue" in loc7 or "head north" in loc7 or "keep climbing" in loc7) and gem == 1:
         print("You've decided to get the gem, it was too captivating to leave behind. With the gem stashed safely in your backpack, you continue.")
         question = 8
         break
@@ -446,6 +452,7 @@ But with what?\n""")
         else:
           print("Inventory\n********")
           print(playerinv)
+          print("********")
       elif "go back" in loc8 and gem == 1 or "leave" in loc8 and gem == 1:
         print("There's no reason to go back to the wall. You already have the gem.")
       elif "go back" in loc8 and gem == 0 or "leave" in loc8 and gem == 0:
@@ -538,7 +545,7 @@ You continue on your journey towards the peak, you are surely close now.\n""")
 The dwarf warns you, the peak has shifted and is currently inaccessible by foot. 
 He gives you an amulet that will show you a hidden wall into the mountain itself.
 He also gives you a dwarven key, that can operate an elevator inside the mountain to bring you to the peak.
-You continue on your journey towards the peak, you are surely close now.""")
+You continue on your journey towards the peak, you are surely close now.\n""")
                         inventory.remove("Yellow Gem")
                         inventory.append("Dwarven Amulet")
                         inventory.append("Dwarven Key")
@@ -562,7 +569,7 @@ You continue on your journey towards the peak, you are surely close now.""")
 Your enthusiasm does not last long. A gigantic white-furred Yeti jumps in front of you, seemingly waiting for a traveler to pass by.
 Before you can even react he lunges for your axe and snaps it in half like the twig of a birch tree.
 He tells you can't pass unless you succeed at his number guessing game, and if you lose, you die.
-(Talk with the Yeti to proceed to the guess game.)""")
+(Talk with the Yeti to proceed to the guessing game.)""")
       inventory.remove("Ice axe")
       playerinv = "\n".join(inventory)
       axe = 0
@@ -574,6 +581,7 @@ He tells you can't pass unless you succeed at his number guessing game, and if y
           else:
             print("Inventory\n********")
             print(playerinv)
+            print("********")
         elif "run" in loc9:
           print("Each 10 steps you take is 1 for the Yeti, you can't outrun him.")
         elif "fight" in loc9:
@@ -583,7 +591,7 @@ With a single swipe of his claw you get thrown off the cliff side, and die in an
           question = 0
           break
         elif "talk" in loc9 or "speak" in loc9 or "interact" in loc9:
-          print("""\"I will think of a number and give you 5 tries to guess it. 
+          print("""\"I will think of a number between 1 and 10, and give you 5 tries to guess it. 
 If you haven't guessed the number after those 5 tries, you will not leave this mountain.\""""
                 )
           for counter in range(5):
@@ -627,6 +635,7 @@ In front of you is a big mountain wall, and to the right is the snow that imposs
         else:
           print("Inventory\n********")
           print(playerinv)
+          print("********")
       elif loc10 == "look at wall" or loc10 == "inspect wall" or loc10 == "observe wall" or loc10 == "wall":
         print("It just looks like a regular mountain side to you. Even when you touch the wall physically, nothing seems off.")
       elif loc10 == "look at snow" or loc10 == "inspect snow":
@@ -636,7 +645,7 @@ You aren't a bad climber, but even this one would be impossible for you.""")
         print("""You decide to hold the amulet next to the wall, hoping the dwarf told you the truth. 
 Luckily, not long after the wall seems to shift, twist and turn before it completely disappears from view.
 You now see a grand hallway, made out of beautiful stonework with dwarven architecture.
-Without hesitating, you enter the hallway.""")
+Without hesitating, you enter the hallway.\n""")
         question = 11
         break
 
@@ -652,6 +661,7 @@ The sanctum is very detailed and ornamented, however there is not much of use in
           else:
             print("Inventory\n********")
             print(playerinv)
+            print("********")
         if "approach" in loc11 or "inspect" in loc11 or "enter" in loc11 and "elevator" in loc11 or "go to elevator" in loc11:
           print("""You approach the elevator, it is large and radial. 
 In the middle of the elevator platform there is a small floor stand with a keyhole slot. The stand doesn't reach higher than your hips.
@@ -662,7 +672,7 @@ There is also a large mechanical button on the side of the stand.""")
             or "press button" in elevatorquestion and dwarfkey == 0:
               print("""You press the large mechanical button on the side of the stand, the elevator starts rising up slowly.
 It looks like it hasn't been used for a while, you have to dodge some small debris that gets shaken loose during the ascent.
- After a while of ascending, the elevator comes to a stop. You get dropped off at another dwarven sanctum inside the mountain.
+After a while of ascending, the elevator comes to a stop. You get dropped off at another dwarven sanctum inside the mountain.
 This time it is alot smaller, however. You leave the sanctum and approach the peak of the mountain.\n""")
               question = 12
               loc11 == ""
@@ -691,20 +701,22 @@ There, on the peak you see the thing you came all this way for. The flag that wi
           else:
             print("Inventory\n********")
             print(playerinv)
+            print("********")
         elif ("inspect" in loc12 or "approach" in loc12 or "go to" in loc12
               or "look at" in loc12) and "flag" in loc12:
           print("""You approach a slightly frozen line of flags on top of the peak.
-The flag is next to alot of other flags in a row, all hung from a line. You can see a few ripped off by previous villagers.""")
-        while True:
+The flag is next to a lot of other flags in a row, all hung from a line. You can see a few ripped off by previous villagers.""")
+        while ("inspect" in loc12 or "approach" in loc12 or "go to" in loc12
+              or "look at" in loc12) and "flag" in loc12:
           flagquestion = input("What do you do with the flag?: ").lower()
           if "grab" in flagquestion or "take" in flagquestion or "get" in flagquestion or "rip off" in flagquestion:
-            print(
-              "You rip a flag right off the line, and stash it in your backpack.")
+            print("You rip a flag right off the line, and stash it in your backpack.")
             inventory.append("Flag")
             playerinv = "\n".join(inventory)
             flag = 1
             question = 0
             epilogue = 1
+            loc12 = ""
             break
 
     #epilogue
